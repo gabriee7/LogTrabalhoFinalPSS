@@ -1,4 +1,3 @@
 log\ILog.class
+com\exemplo\App.class
 log\CSVLog.class
-log\JsonLog.class
-LogService.class
