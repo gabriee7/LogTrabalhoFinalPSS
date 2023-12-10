@@ -14,12 +14,13 @@ public class LogService {
     private String paramLog;
 
     public LogService(String paramLog) {
-        metodoLog = getLogFactory();
+        this.paramLog = paramLog;
+        metodoLog = getLogFactory(paramLog);
     }
     
-    private ILog getLogFactory(){  
+    private ILog getLogFactory(String paramLog){  
         try{
-            System.out.println("CHAMADO");
+            System.out.println("CMADO");
             Class<?> classeProp = Class.forName(paramLog);
             Object instanciaLog = classeProp.getDeclaredConstructor().newInstance();
             return (ILog)instanciaLog;
