@@ -22,6 +22,7 @@ public class LogService {
     
     private ILog getLogFactory(){  
         try{
+            System.out.println("CHAMADO");
             Class<?> classeProp = Class.forName(paramLog);
             Object instanciaLog = classeProp.getDeclaredConstructor().newInstance();
             return (ILog)instanciaLog;

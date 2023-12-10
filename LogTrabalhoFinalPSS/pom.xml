@@ -19,4 +19,17 @@
             <version>20210307</version>
         </dependency>
     </dependencies>
+    
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>com.github.jitpack</groupId>
+            <artifactId>jitpack-maven-plugin</artifactId>
+            <version>3.6.3</version>
+            <configuration>
+                <repo>https://jitpack.io</repo>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>
