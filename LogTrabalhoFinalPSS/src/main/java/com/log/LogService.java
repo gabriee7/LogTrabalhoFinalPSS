@@ -1,5 +1,7 @@
 package com.log;
 
+import java.lang.reflect.Method;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -20,10 +22,16 @@ public class LogService {
     
     private ILog getLogFactory(String paramLog){  
         try{
+            
             System.out.println("CMADO");
-            Class<?> classeProp = Class.forName(paramLog);
-            Object instanciaLog = classeProp.getDeclaredConstructor().newInstance();
-            return (ILog)instanciaLog;
+            Class<?> classePro = Class.forName(paramLog);
+            Method metodoGetInstancia = classePro.getMethod("getInstancia");
+            Object instancia = metodoGetInstancia.invoke(null);
+            return (ILog)instancia;
+            
+//            Class<?> classeProp = Class.forName(paramLog);
+//            Object instanciaLog = classeProp.getDeclaredConstructor().newInstance();
+//            return (ILog)instanciaLog;
         }catch(Exception e) {
             throw new RuntimeException("Erro: LOG não suportado! \n" + e.getMessage());
         }
