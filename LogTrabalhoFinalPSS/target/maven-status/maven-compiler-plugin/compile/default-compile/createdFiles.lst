@@ -1,4 +1,4 @@
-log\ILog.class
-log\CSVLog.class
-log\JsonLog.class
-LogService.class
+com\log\CSVLog.class
+com\log\JsonLog.class
+com\log\ILog.class
+com\log\LogService.class

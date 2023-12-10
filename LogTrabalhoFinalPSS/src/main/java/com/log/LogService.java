@@ -1,7 +1,4 @@
-
-import log.CSVLog;
-import log.ILog;
-import log.JsonLog;
+package com.log;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
