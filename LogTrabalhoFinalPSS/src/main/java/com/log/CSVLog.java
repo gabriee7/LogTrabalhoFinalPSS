@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -6,6 +7,7 @@ package com.log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,6 +16,8 @@ import java.io.IOException;
  *
  * @author nitro5WIN10
  */
+
+
 public class CSVLog implements ILog {
     private static CSVLog instancia;
     private String arquivoCSV;
@@ -32,11 +36,14 @@ public class CSVLog implements ILog {
 
     public void addLog(String mensagem) {
         salvarLog(mensagem);
+        lerArquivo();
     }
 
     private void criaArquivo() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(arquivoCSV))) {
-            if (reader.readLine() == null) {
+        try {
+            File arquivo = new File(arquivoCSV);
+            if (!arquivo.exists()) {
+                arquivo.createNewFile();
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoCSV, true))) {
                     writer.write("Log;\n");
                 }
@@ -50,6 +57,18 @@ public class CSVLog implements ILog {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoCSV, true))) {
             writer.write(mensagem);
             writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void lerArquivo() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(arquivoCSV))) {
+            String linha;
+            while ((linha = reader.readLine()) != null) {
+                // Faça algo com cada linha lida, se necessário
+                System.out.println( "\nlog:" + linha);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
